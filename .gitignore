@@ -1,0 +1,23 @@
+# Flutter build artifacts
+**/build/
+**/.dart_tool/
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+
+# Secrets — never commit
+**/lib/secrets.dart
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
