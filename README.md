@@ -1,4 +1,4 @@
-# AR Browser Remote for Rokid Glasses
+# Rokid Remote
 
 Control a web browser on your Rokid AR glasses from your Android phone over Bluetooth.
 
@@ -52,17 +52,17 @@ These work directly on the Rokid glasses without touching your phone:
 
 | App | Runs on | Install |
 |---|---|---|
-| **AR Browser Remote** (phone) | Android phone | [Download APK](../../releases/latest) |
-| **AR Browser** (glasses) | Rokid AR glasses | [Download APK](../../releases/latest) — see sideload instructions below |
+| **Rokid Remote** (phone) | Android phone | [Download APK](../../releases/latest) |
+| **Rokid Browser** (glasses) | Rokid AR glasses | [Download APK](../../releases/latest) — see sideload instructions below |
 
 ---
 
 ## Glasses app — sideload via ADB
 
-The glasses app cannot be distributed through the Play Store. You must install it manually.
+The glasses app must be installed manually via ADB.
 
 **Requirements:**
-- USB cable
+- Rokid Debugging Cable (the original cable supports charging only)
 - ADB installed on your PC ([download here](https://developer.android.com/tools/releases/platform-tools))
 - Developer mode enabled on your Rokid glasses
 
