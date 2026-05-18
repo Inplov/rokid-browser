@@ -20,8 +20,8 @@ Control a web browser on your Rokid AR glasses from your Android phone over Blue
 
 | App | Runs on | Install |
 |---|---|---|
-| **AR Browser Remote** (phone) | Android phone | [Google Play](#) *(coming soon)* |
-| **AR Browser** (glasses) | Rokid AR glasses | See sideload instructions below |
+| **AR Browser Remote** (phone) | Android phone | [Download APK](../../releases/latest) |
+| **AR Browser** (glasses) | Rokid AR glasses | [Download APK](../../releases/latest) — see sideload instructions below |
 
 ---
 
