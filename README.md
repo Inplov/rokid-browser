@@ -70,7 +70,7 @@ The glasses app must be installed manually via ADB.
 
 1. Download the latest glasses APK from [Releases](../../releases)
 2. Connect your glasses to your PC via USB
-3. Enable USB debugging on the glasses
+3. Enable ADB debugging: open the **Hi Rokid** app → Settings → Developer
 4. Run:
 
 ```bash
