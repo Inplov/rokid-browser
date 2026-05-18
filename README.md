@@ -87,13 +87,12 @@ adb install ar-browser-glasses.apk
 **Requirements:** Flutter 3.x, Android SDK
 
 ```bash
-git clone https://github.com/yourusername/ar-browser-rokid.git
-cd ar-browser-rokid
+git clone https://github.com/Inplov/rokid-browser.git
+cd rokid-browser
 
 # Phone app
 cd rokid_browser_phone
 cp lib/secrets.dart.example lib/secrets.dart
-# Edit lib/secrets.dart with your AdMob IDs (optional)
 flutter pub get
 flutter run
 
