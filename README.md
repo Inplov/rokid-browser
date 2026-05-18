@@ -47,8 +47,6 @@ These work directly on the Rokid glasses without touching your phone:
 | **Single tap** centre button | Play / pause media |
 | **Double tap** centre button | Exit fullscreen or go back |
 | **Volume up / down** buttons | Adjust media volume |
-| **Back arrow** in HUD | Go back (tap on the `‹` icon) |
-| **Bookmark icon** in HUD | Save current page to bookmarks |
 
 ## Apps
 
