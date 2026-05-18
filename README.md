@@ -4,7 +4,7 @@ Control a web browser on your Rokid AR glasses from your Android phone over Blue
 
 > **Unofficial project** — not affiliated with Rokid. Built with ❤️ by the community.
 
-[![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/yourname)
+[![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/inplov)
 
 ---
 
@@ -77,7 +77,7 @@ flutter run
 
 This app is free and open source. If it's useful to you, consider buying me a coffee — it helps keep the project maintained.
 
-[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/yourname)
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/inplov)
 
 ---
 
