@@ -88,6 +88,13 @@ class _BrowserScreenState extends State<BrowserScreen> {
         'Chrome/120.0.0.0 Mobile Safari/537.36',
       )
       ..setNavigationDelegate(NavigationDelegate(
+        onNavigationRequest: (request) {
+          final scheme = Uri.tryParse(request.url)?.scheme ?? '';
+          if (scheme == 'http' || scheme == 'https' || scheme == 'about') {
+            return NavigationDecision.navigate;
+          }
+          return NavigationDecision.prevent;
+        },
         onPageStarted: (url) {
           setState(() {
             _url = url;
