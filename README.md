@@ -63,22 +63,34 @@ The glasses app must be installed manually via ADB.
 
 **Requirements:**
 - Rokid Debugging Cable (the original cable supports charging only)
-- ADB installed on your PC ([download here](https://developer.android.com/tools/releases/platform-tools))
 - Developer mode enabled on your Rokid glasses
 
 **Steps:**
 
-1. Download the latest glasses APK from [Releases](../../releases)
-2. Connect your glasses to your PC via USB
-3. Enable ADB debugging: open the **Hi Rokid** app → Settings → Developer
-4. Run:
+1. Install ADB (Android Debug Bridge) on your PC:
 
 ```bash
-adb install ar-browser-glasses.apk
+# Windows (winget)
+winget install --id Google.PlatformTools
+
+# macOS (Homebrew)
+brew install android-platform-tools
+
+# Linux (apt)
+sudo apt install adb
 ```
 
-5. Launch **AR Browser** on the glasses
-6. Install the phone app and open it — it will connect automatically over Bluetooth
+2. Download the latest glasses APK (`rokid-browser-glasses-*.apk`) from [Releases](../../releases)
+3. Connect your glasses to your PC via USB using the Rokid Debugging Cable
+4. Enable ADB debugging: open the **Hi Rokid** app → Settings → Developer
+5. Run (replace the filename with the version you downloaded):
+
+```bash
+adb install rokid-browser-glasses-v1.0.0.apk
+```
+
+6. Launch **AR Browser** on the glasses
+7. Install the phone app and open it — it will connect automatically over Bluetooth
 
 ---
 
