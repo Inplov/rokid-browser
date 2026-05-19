@@ -19,9 +19,9 @@ class BrowserScreen extends StatefulWidget {
 
 class _BrowserScreenState extends State<BrowserScreen> {
   static const _eventChannel =
-      EventChannel('com.rokid.rokid_browser_glasses/events');
+      EventChannel('com.snorlytics.browser_glasses/events');
   static const _methodChannel =
-      MethodChannel('com.rokid.rokid_browser_glasses/methods');
+      MethodChannel('com.snorlytics.browser_glasses/methods');
 
   late final WebViewController _webController;
   bool _webViewReady = false;
@@ -43,6 +43,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
   bool _isDark = true;
   Timer? _configRetryTimer;
   bool _passthrough = false;
+  bool _theaterMode = false;
   int _lastGestureMs = 0; // debounce for touchpad swipes
   static const _gestureDebounceMs = 700;
 
@@ -91,6 +92,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
           setState(() {
             _url = url;
             _loading = true;
+            _theaterMode = false;
           });
           _sendState(url: url, loading: true);
           if (!_webViewConfigured) {
@@ -325,23 +327,37 @@ class _BrowserScreenState extends State<BrowserScreen> {
         if (mounted) setState(() => _isDark = dark);
         if (_url.isNotEmpty) await _applyTheme(dark);
       case 'minimize':
-        _exitFullscreen();
+        if (_theaterMode) {
+          _exitTheaterMode();
+        } else {
+          _exitFullscreen();
+        }
       case 'video_theater':
-        _webController.runJavaScript('''
+        if (_theaterMode) {
+          _exitTheaterMode();
+        } else {
+          setState(() => _theaterMode = true);
+          _webController.runJavaScript('''
 (function(){
   var v=document.querySelector('video');
   if(!v)return;
-  // Force full-black background
+  window.__rokidTheaterOriginals=window.__rokidTheaterOriginals||{};
+  window.__rokidTheaterOriginals.htmlStyle=document.documentElement.getAttribute('style')||'';
+  window.__rokidTheaterOriginals.bodyStyle=document.body.getAttribute('style')||'';
+  window.__rokidTheaterOriginals.videoStyle=v.getAttribute('style')||'';
+  window.__rokidTheaterOriginals.hiddenEls=[];
   document.documentElement.style.cssText='background:#000!important;overflow:hidden!important';
   document.body.style.cssText='background:#000!important;overflow:hidden!important;margin:0!important;padding:0!important';
-  // Pin video to fill entire viewport
   v.style.cssText='position:fixed!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;z-index:2147483647!important;background:#000!important;object-fit:contain!important';
   v.muted=false; v.volume=1;
-  // Hide everything else in the body
   Array.from(document.body.children).forEach(function(el){
-    if(!el.contains(v)&&el!==v){el.style.setProperty('display','none','important');}
+    if(!el.contains(v)&&el!==v){
+      window.__rokidTheaterOriginals.hiddenEls.push({el:el,display:el.style.display});
+      el.style.setProperty('display','none','important');
+    }
   });
 })()''');
+        }
       case 'cursor_move':
         final dx = (cmd['dx'] as num?)?.toDouble() ?? 0;
         final dy = (cmd['dy'] as num?)?.toDouble() ?? 0;
@@ -674,6 +690,26 @@ class _BrowserScreenState extends State<BrowserScreen> {
 })()''');
     final inFullscreen = result == true || result.toString() == 'true';
     if (!inFullscreen && _canGoBack) _webController.goBack();
+  }
+
+  void _exitTheaterMode() {
+    setState(() => _theaterMode = false);
+    _webController.runJavaScript(r'''
+(function(){
+  var o=window.__rokidTheaterOriginals;
+  if(!o)return;
+  var v=document.querySelector('video');
+  if(o.htmlStyle!==null)document.documentElement.setAttribute('style',o.htmlStyle);
+  else document.documentElement.removeAttribute('style');
+  if(o.bodyStyle!==null)document.body.setAttribute('style',o.bodyStyle);
+  else document.body.removeAttribute('style');
+  if(v){
+    if(o.videoStyle)v.setAttribute('style',o.videoStyle);
+    else v.removeAttribute('style');
+  }
+  (o.hiddenEls||[]).forEach(function(item){item.el.style.display=item.display;});
+  delete window.__rokidTheaterOriginals;
+})()''');
   }
 
   void _exitFullscreen() {
