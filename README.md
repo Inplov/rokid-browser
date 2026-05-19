@@ -36,7 +36,7 @@ No pressure at all — enjoying the app is enough. Thank you for being here. �
 | Trackpad | Move cursor on glasses — tap to click, hold to long-press, double-tap then drag to drag |
 | Scroll arrows | Scroll the page up, down, left, right |
 | Zoom In / Zoom Out | Adjust page zoom level |
-| **Theater mode** | Pins the playing video fullscreen on the glasses display, hides everything else, and sets volume to max — ideal for YouTube and video sites. Use **Exit Full** to leave, or restart the glasses app if it becomes unresponsive |
+| **Theater mode** | Pins the playing video fullscreen on the glasses display, hides everything else, and sets volume to max — ideal for YouTube and video sites. Use **Reload** to exit theater mode |
 | Exit Full | Exits fullscreen or theater mode |
 | Keyboard | Type text into the focused input on the glasses |
 | Block 3rd-party cookies | Blocks tracking cookies for the current session |
