@@ -80,6 +80,8 @@ brew install android-platform-tools
 sudo apt install adb
 ```
 
+> **Windows:** Open a new terminal window after installing for `adb` to be recognised.
+
 2. Download the latest glasses APK (`rokid-browser-glasses-*.apk`) from [Releases](../../releases)
 3. Connect your glasses to your PC via USB using the Rokid Debugging Cable
 4. Enable ADB debugging: open the **Hi Rokid** app → Settings → Developer
