@@ -7,6 +7,9 @@
 
 # Secrets — never commit
 **/lib/secrets.dart
+*.jks
+*.keystore
+key.properties
 
 # IDE
 .idea/
